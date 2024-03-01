@@ -1,17 +1,21 @@
 import { FC } from 'react';
 
 interface Props {
-  imgUrl: String;
-  imgAlt?: String;
+  imgUrl?: string;
+  imgAlt?: string;
   size?: 'sm' | 'md';
 }
 
-const Avatar: FC<Props> = (props) => {
+const Avatar: FC<Props> = ({
+  imgUrl = 'https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg',
+  imgAlt = '',
+  size = 'sm',
+}) => {
   return (
     <img 
-      className={`avatar rounded-full ${props.size === 'md' ? 'w-10' : 'w-6'}`} 
-      src={`${props.imgUrl}`} 
-      alt={`${props.imgAlt}`}
+      className={`avatar rounded-full ${size === 'md' ? 'w-10' : 'w-6'}`} 
+      src={`${imgUrl}`} 
+      alt={`${imgAlt}`}
     />
   )
 }

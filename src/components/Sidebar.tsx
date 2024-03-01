@@ -6,7 +6,7 @@ import { CiMusicNote1 } from 'react-icons/ci';
 import { FaRegNewspaper } from 'react-icons/fa';
 import { SiYoutubeshorts } from 'react-icons/si';
 import { MdSubscriptions } from 'react-icons/md';
-import { Props as MenuItemProps } from './MenuItem';
+import MenuItem, { Props as MenuItemProps } from './MenuItem';
 import { LuUserSquare } from 'react-icons/lu';
 import { FaHistory } from 'react-icons/fa';
 import { GoVideo } from 'react-icons/go';
@@ -23,8 +23,10 @@ import { CiCircleQuestion } from 'react-icons/ci';
 import { BsChatLeftQuote } from 'react-icons/bs';
 import { FaFireAlt } from 'react-icons/fa';
 import { MdMovie } from 'react-icons/md';
-import Avatar from './Avatar';
 import MenuList from './MenuList';
+import { useSelector } from 'react-redux';
+import { State as AuthState } from '../redux/features/authSlice';
+import { Link } from 'react-router-dom';
 
 /* Dummy data */
 const generalMenu: Array<MenuItemProps> = [
@@ -69,33 +71,6 @@ const personalMenu: Array<MenuItemProps> = [
     text: 'Liked Videos',
     icon: <AiFillLike />
   }
-];
-
-const subscriptionMenu: Array<MenuItemProps> = [
-  {
-    text: 'Subscription',
-    standout: true,
-  },
-  {
-    text: 'account-1',
-    icon: <Avatar imgUrl='https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg' imgAlt='account-1' />
-  },
-  {
-    text: 'account-2',
-    icon: <Avatar imgUrl='https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg' imgAlt='account-2' />
-  },
-  {
-    text: 'account-3',
-    icon: <Avatar imgUrl='https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg' imgAlt='account-3' />
-  },
-  {
-    text: 'account-4',
-    icon: <Avatar imgUrl='https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg' imgAlt='account-4' />
-  },
-  {
-    text: 'account-5',
-    icon: <Avatar imgUrl='https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg' imgAlt='account-5' />
-  },
 ];
 
 const explorationMenu: Array<MenuItemProps> = [
@@ -177,6 +152,12 @@ interface Props {
 }
 
 const Sidebar: React.FC<Props> = (props) => {
+  const subscription = useSelector((state: any) => (state.auth as AuthState).me.subscription)
+  const subscriptionMenu = subscription.map(account => ({
+    text: account.text,
+    icon: account.avatarURL,
+  }))
+  
   return (
     <div className='drawer'>
       {/* Checkbox to toggle sidebar, will not showed */}
@@ -201,6 +182,9 @@ const Sidebar: React.FC<Props> = (props) => {
             {/* Personal menu */}
             <MenuList listMenu={personalMenu} />
             {/* Subscription menu */}
+            <Link to='/' className='btn btn-ghost w-full'>
+              <MenuItem text='Subscription' standout={true} />
+            </Link>
             <MenuList listMenu={subscriptionMenu} />
             {/* Exploration menu */}
             <MenuList listMenu={explorationMenu} />

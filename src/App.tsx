@@ -1,8 +1,10 @@
 import { Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
-import Video from './pages/Video'
+import Watch from './pages/Watch'
 import Sidebar from './components/Sidebar'
+import NotFound from './pages/NotFound'
+import Results from './pages/Results'
 
 const App = () => {
   return (
@@ -11,7 +13,9 @@ const App = () => {
       <Sidebar id='universal-sidebar' />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/video/:categoryId/:videoId' element={<Video />} />
+        <Route path='/results' element={<Results />} />
+        <Route path='/watch' element={<Watch />} />
+        <Route path='/*' element={<NotFound />} />
       </Routes>
     </div>
   )

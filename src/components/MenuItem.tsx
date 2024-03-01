@@ -1,11 +1,12 @@
 import { FC } from 'react';
+import Avatar from './Avatar';
 
 export interface Props {
-  text?: String,
-  icon?: JSX.Element,
-  reverse?: Boolean,
-  standout?: Boolean,
-  oneLine?: Boolean,
+  text?: string,
+  icon?: JSX.Element | string,
+  reverse?: boolean,
+  standout?: boolean,
+  oneLine?: boolean,
   textSize?: 'sm' | 'md' | 'lg',
 }
 
@@ -18,7 +19,17 @@ const MenuItem: FC<Props> = ({
   textSize = 'lg'
 }) => {
   let content;
-  const iconEl = <div className='flex items-center text-2xl'>{icon}</div>;
+  const iconEl = (
+    <>
+      {
+        typeof icon === 'string' ? (
+          <Avatar imgUrl={icon}/>
+        ) : (
+          <div className='flex items-center text-2xl'>{icon}</div>
+        )
+      }
+    </>
+  );
   const textEl = <p className={`
     ${standout && 'font-bold'}
     ${textSize === 'sm' ? 'text-xs' : textSize === 'md' ? 'text-lg' : 'text-xl' }

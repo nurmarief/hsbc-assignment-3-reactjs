@@ -7,9 +7,12 @@ import SidebarToggleBtn from './SidebarToggleBtn';
 import Avatar from './Avatar';
 import Searchbar from './Searchbar';
 import { FaArrowLeft } from 'react-icons/fa6';
+import { useSelector } from 'react-redux';
+import { State as AuthState } from '../redux/features/authSlice';
 
 const Navbar: FC = () => {
   const [isSearchbarActive, setIsSearchBarActive] = useState(false)
+  const { avatarURL } = useSelector((state: any) => (state.auth as AuthState).me)
 
   const handleCloseIsSearchbarActive = () => {
     setIsSearchBarActive(false);
@@ -65,7 +68,7 @@ const Navbar: FC = () => {
               </button>
               {/* Avatar */}
               <button className='btn btn-circle btn-ghost overflow-hidden' aria-label='Show profile'>
-                <Avatar imgUrl='https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg' imgAlt='User avatar' size='md'/>
+                <Avatar imgUrl={avatarURL} imgAlt='User avatar' size='md'/>
               </button>
             </div>
           </>
