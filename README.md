@@ -1,30 +1,50 @@
-# React + TypeScript + Vite
+# HSBC Assignment #3: Reactjs
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the solution of HSBC Assignment #3: Reactjs. In this assignment, students were asked to build a react app. Regarding that, this project is trying to create a youtube clone using [youtube data API v3](https://developers.google.com/youtube/v3).
 
-Currently, two official plugins are available:
+## Table of contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [App Features](#app-features)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [Useful resources](#useful-resources)
 
-## Expanding the ESLint configuration
+## Overview
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### The challenge
 
-- Configure the top-level `parserOptions` property like this:
+1. Create a react app that apply reusable component, state management, hooks, and routing
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+### App features
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. Search video using keywords
+2. Play video and see video details
+3. See video comments
+4. See 404 page when the route doesn't exist
+5. See video not found component when the video are not exist in youtube database
+
+### Screenshot
+
+![Desktop preview 1](./results/desktop-preview-1.png)
+![Desktop preview 2](./results/desktop-preview-2.png)
+
+### Links
+
+- [Github repo](https://github.com/nurmarief/hsbc-assignment-3-reactjs/)
+- [Live site](https://hsbc-assignment-3-reactjs.vercel.app/)
+
+## My process
+
+### Built with
+
+- Reactjs + typescript
+- Tailwindcss + daisyui
+- React router dom
+- Redux toolkit
+
+### Useful Resources
+- [Youtube data API v3](https://developers.google.com/youtube/v3)
